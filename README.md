@@ -1,4 +1,10 @@
-# S8AngularSTARWARS
+# S8-Angular: STAR WARS
+
+
+
+This project consists of creating a website inspired by the official STAR WARS website. Consumes data from the STAR WARS API to display a list of ships with all associated details.
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
