@@ -1,0 +1,22 @@
+<div class="form-floating mx-3 mb-3">
+    <form [formGroup]="registerForm" class="" (ngSubmit)="saveRegisterForm()" autocomplete="off">
+        <input id="email" class="form-control" type="email" formControlName="email" placeholder="e-mail">
+        <label for="email">e-mail</label> <br>
+
+        <input id="firstname" class="form-control" type="text" formControlName="firstname" placeholder="Name">
+        <label for="namel">Name</label> <br>
+
+        <input id="surname" class="form-control" type="text" formControlName="surname" placeholder="Surname">
+        <label for="surname">Surname</label> <br>
+
+        <input id="password" class="form-control" type="password" formControlName="password" placeholder="Password">
+        <label for="password">Password</label> <br>
+
+        <div class="d-flex align-items-center justify-content-center">
+            <button id="saveForm" type="submit" class="btn btn-primary mx-5 mb-3"> <!-- [disabled]="budgetDataForm.invalid" -->
+              <i class="bi bi-save"></i> Sign Up </button>
+          </div>
+    </form>
+</div>
+
+
