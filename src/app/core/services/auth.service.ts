@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Validators, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  public loginForm : any;
+  constructor (
+  
+  ) {}
 
-  constructor() { }
+  login(loginForm: FormGroup){
 
-  login(){
-
-    let email = this.loginForm.value.email
-    let password = this.loginForm.value.password
+    console.log('Holi desde el servicio');
+    
+    let email = loginForm.value.email
+    let password = loginForm.value.password
 
     console.log(email, password);
     

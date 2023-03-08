@@ -93,6 +93,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/fonts/dinNext/dinNextStyle.css",
+              "src/assets/fonts/matterhorn/matterhornStyle.css",
               "bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],

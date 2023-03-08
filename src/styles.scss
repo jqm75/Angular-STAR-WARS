@@ -1,4 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fonts */
+@import '/src/assets/fonts/dinNext/dinNextStyle.css';
+@import '/src/assets/fonts/matterhorn/matterhornStyle.css';
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+
+* {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
+    &:not(.no-animated):not(.slick-track):not(.slick-slide){
+        -moz-transition: all .15s ease-out;
+        -webkit-transition: all .15s ease-out;
+        -ms-transition: all .15s ease-out;
+        -o-transition: all .15s ease-out;
+        transition: all .15s ease-out;
+        &::after,
+        &::before{
+            -moz-transition: all .15s ease-out;
+            -webkit-transition: all .15s ease-out;
+            -ms-transition: all .15s ease-out;
+            -o-transition: all .15s ease-out;
+            transition: all .15s ease-out;
+        }
+    }
+}

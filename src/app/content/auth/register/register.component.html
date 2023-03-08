@@ -1,22 +1,30 @@
-<div class="form-floating mx-3 mb-3">
-    <form [formGroup]="registerForm" class="" (ngSubmit)="saveRegisterForm()" autocomplete="off">
+<form [formGroup]="registerForm" class="" (ngSubmit)="saveRegisterForm()" autocomplete="off">
+
+    <div class="form-floating mb-3">
         <input id="email" class="form-control" type="email" formControlName="email" placeholder="e-mail">
-        <label for="email">e-mail</label> <br>
+        <label for="email">e-mail</label>
+    </div>
 
+    <div class="form-floating mb-3">
         <input id="firstname" class="form-control" type="text" formControlName="firstname" placeholder="Name">
-        <label for="namel">Name</label> <br>
+        <label for="namel">Name</label>
+    </div>
 
+    <div class="form-floating mb-3">
         <input id="surname" class="form-control" type="text" formControlName="surname" placeholder="Surname">
-        <label for="surname">Surname</label> <br>
+        <label for="surname">Surname</label>
+    </div>
 
+    <div class="form-floating mb-3">
         <input id="password" class="form-control" type="password" formControlName="password" placeholder="Password">
-        <label for="password">Password</label> <br>
+        <label for="password">Password</label>
+    </div>
 
-        <div class="d-flex align-items-center justify-content-center">
-            <button id="saveForm" type="submit" class="btn btn-primary mx-5 mb-3"> <!-- [disabled]="budgetDataForm.invalid" -->
-              <i class="bi bi-save"></i> Sign Up </button>
-          </div>
-    </form>
-</div>
+    <div class="d-flex align-items-center justify-content-center">
+        <button id="saveForm" type="submit" class="btn btn-primary mx-5 mb-3"> Sign Up </button>
+    </div>
+
+</form>
+
 
 
