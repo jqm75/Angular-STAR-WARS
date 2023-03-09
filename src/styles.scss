@@ -5,25 +5,10 @@
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
+body {
 
-* {
-    -webkit-appearance: none;
-    appearance: none;
-    outline: none;
+    font-family:'DIN Next LT Pro', 'Matterhorn Regular', Helvetica, sans-serif;
+    font-weight: normal;
+    
 
-    &:not(.no-animated):not(.slick-track):not(.slick-slide){
-        -moz-transition: all .15s ease-out;
-        -webkit-transition: all .15s ease-out;
-        -ms-transition: all .15s ease-out;
-        -o-transition: all .15s ease-out;
-        transition: all .15s ease-out;
-        &::after,
-        &::before{
-            -moz-transition: all .15s ease-out;
-            -webkit-transition: all .15s ease-out;
-            -ms-transition: all .15s ease-out;
-            -o-transition: all .15s ease-out;
-            transition: all .15s ease-out;
-        }
-    }
 }

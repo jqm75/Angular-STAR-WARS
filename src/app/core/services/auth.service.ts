@@ -1,28 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Validators, FormGroup } from '@angular/forms';
+import { Auth } from '../interfaces/auth.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private _auth: Auth | undefined;
   
   constructor (
-  
+    
   ) {}
 
   login(loginForm: FormGroup){
-
-    console.log('Holi desde el servicio');
     
-    let email = loginForm.value.email
+    let email    = loginForm.value.email
     let password = loginForm.value.password
+    let user     = loginForm.value.firstname
 
-    console.log(email, password);
+    this._auth = {
+      email : email,
+      user  : user
+    }
     
     let localUser = JSON.parse(localStorage.getItem('user')!);
     
-    console.log(localUser);
-    console.log(localUser.email);
-    
- }
+    if(localUser.email === email && localUser.password === password){
+      alert('Logeado nen')
+    }
+
+  }
 }
+
+
