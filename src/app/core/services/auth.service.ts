@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Auth } from '../interfaces/auth.interface';
 
 
@@ -9,9 +10,10 @@ import { Auth } from '../interfaces/auth.interface';
 export class AuthService {
 
   private _auth: Auth | undefined;
-  
+  public logged : boolean = false
+
   constructor (
-    
+    private router:Router
   ) {}
 
   login(loginForm: FormGroup){
@@ -20,18 +22,36 @@ export class AuthService {
     let password = loginForm.value.password
     let user     = loginForm.value.firstname
 
+    let localUser = JSON.parse(localStorage.getItem('user')!);
+    
     this._auth = {
       email : email,
       user  : user
     }
     
-    let localUser = JSON.parse(localStorage.getItem('user')!);
-    
     if(localUser.email === email && localUser.password === password){
-      alert('Logeado nen')
+      localStorage.setItem( 'logged','true' )
+      this.router.navigate([''])
     }
+  }
 
+  get auth() {
+    return this._auth;
+  }
+  
+  isLogged() {
+    if (localStorage.getItem('logged')) {
+      return true
+    } return false
+  }
+
+  logout() {
+    localStorage.removeItem('_auth')
+    this._auth = undefined
+    this.router.navigate([''])
   }
 }
+
+//TODO: hacer 3 botones. 1 para registro. 2 login. 3 que llame a la función logout del servcio. Tunear botones en función de si se está logged o no.
 
 

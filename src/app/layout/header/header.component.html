@@ -1,16 +1,41 @@
 <header>
-    <div id="webNav" class="d-flex header justify-content-between">
+    <div id="main" class="d-flex header justify-content-between ms-3 me-3">
+        
+        <div id="logo" class="d-flex align-items-center justify-content-center">
+    <!--         <a class="logo d-flex align-items-center">
+                <img id="logo_hz" alt="Star Wars" src="../../../assets/img/sw_logo_horiz.webp">
+            </a> -->
+            <a class="logo d-flex align-items-center mt-3">
+                <img id="logo_stacked" alt="Star Wars" src="../../../assets/img/sw_logo_stacked.webp">
+            </a>
+            
+        </div>
+
+        <div id="login" class="d-flex justify-content-center text-white mt-3">
+            <div >
+                <span *ngIf="!auth?.email">
+                    <a [routerLink]="[ '/login' ]">Login</a>
+                </span>
+                <span *ngIf="auth?.email">
+                    <a (click)="logout()">Logout</a>
+                </span>
+                <span class="btn" [routerLink]="[ '/register' ]" *ngIf="!auth?.email">
+                    <img id="user_icon" src="../../../assets/img/sw_Oneid_User.svg"><a> Sign Up</a>
+                </span>
+            </div>
+        </div>
 
     </div>  
 
-    <div id="logo" class="d-flex align-items-center justify-content-center">
-<!--         <a class="logo d-flex align-items-center">
-            <img id="logo_hz" alt="Star Wars" src="../../../assets/img/sw_logo_horiz.webp">
-        </a> -->
-        <a class="logo d-flex align-items-center">
-            <img id="logo_stacked" alt="Star Wars" src="../../../assets/img/sw_logo_stacked.webp">
-        </a>
-        
+    <div id="menu">
+        <ul class="d-flex flex-md-row justify-content-center aling-items-center">
+            <li>
+                <a [routerLink]="[ '' ]">Home</a>   
+            </li>
+            <li>
+                <a [routerLink]="[ '/starships' ]">Starships</a>   
+            </li>
+        </ul>
     </div>
 
 </header>
