@@ -1,5 +1,10 @@
-<header>
-    <div id="main" class="d-flex header justify-content-between ms-3 me-3">
+<header class="d-flex flex-column">
+    <div id="main" class="d-flex header justify-content-between">
+        <div class="d-flex header justify-content-between">
+           
+            <span id="header-offset"></span>
+        </div>
+
         
         <div id="logo" class="d-flex align-items-center justify-content-center">
     <!--         <a class="logo d-flex align-items-center">
@@ -11,7 +16,7 @@
             
         </div>
 
-        <div id="login" class="d-flex justify-content-center text-white mt-3">
+        <div id="login" class="d-flex justify-content-end mt-3">
             <div >
                 <span *ngIf="!auth?.email">
                     <a [routerLink]="[ '/login' ]">Login</a>
@@ -28,7 +33,7 @@
     </div>  
 
     <div id="menu">
-        <ul class="d-flex flex-md-row justify-content-center aling-items-center">
+        <ul class="d-flex flex-md-row justify-content-center aling-items-center gap-4 mt-3">
             <li>
                 <a [routerLink]="[ '' ]">Home</a>   
             </li>
@@ -36,6 +41,7 @@
                 <a [routerLink]="[ '/starships' ]">Starships</a>   
             </li>
         </ul>
+        <hr>
     </div>
 
 </header>

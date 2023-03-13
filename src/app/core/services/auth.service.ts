@@ -3,7 +3,6 @@ import { Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from '../interfaces/auth.interface';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -51,7 +50,4 @@ export class AuthService {
     this.router.navigate([''])
   }
 }
-
-//TODO: hacer 3 botones. 1 para registro. 2 login. 3 que llame a la función logout del servcio. Tunear botones en función de si se está logged o no.
-
 
