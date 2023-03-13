@@ -1,0 +1,23 @@
+.main-container {
+    
+    a.starship-card {
+        
+        border-radius: 8px;
+        padding: 20px 30px;
+        background-color: #1d1e1f;
+        text-decoration: none;
+        position: relative;
+        color: rgb(160, 160, 160);
+
+        &:hover {
+            color: rgb(160,160, 160);
+            background-color: #333;
+            
+            h4{
+                color: #ede851;
+            }
+
+        }
+    }
+
+}

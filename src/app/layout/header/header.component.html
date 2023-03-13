@@ -16,18 +16,18 @@
             
         </div>
 
-        <div id="login" class="d-flex justify-content-end mt-3">
-            <div >
+        <div id="login" class="d-flex justify-content-end mt-3 me-3 gap-3">
+            
                 <span *ngIf="!auth?.email">
-                    <a [routerLink]="[ '/login' ]">Login</a>
+                    <a class="link-style" [routerLink]="[ '/login' ]">Login</a>
                 </span>
                 <span *ngIf="auth?.email">
-                    <a (click)="logout()">Logout</a>
+                    <a class="link-style" (click)="logout()">Logout</a>
                 </span>
-                <span class="btn" [routerLink]="[ '/register' ]" *ngIf="!auth?.email">
-                    <img id="user_icon" src="../../../assets/img/sw_Oneid_User.svg"><a> Sign Up</a>
+                <span class="link-style" [routerLink]="[ '/register' ]" *ngIf="!auth?.email">
+                    <img id="user_icon" src="../../../assets/img/sw_Oneid_User.svg"> Sign Up
                 </span>
-            </div>
+            
         </div>
 
     </div>  
@@ -35,10 +35,10 @@
     <div id="menu">
         <ul class="d-flex flex-md-row justify-content-center aling-items-center gap-4 mt-3">
             <li>
-                <a [routerLink]="[ '' ]">Home</a>   
+                <a class="link-style" [routerLink]="[ '' ]">Home</a>   
             </li>
             <li>
-                <a [routerLink]="[ '/starships' ]">Starships</a>   
+                <a class="link-style" [routerLink]="[ '/starships' ]">Starships</a>   
             </li>
         </ul>
         <hr>
