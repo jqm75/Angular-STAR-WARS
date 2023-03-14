@@ -11,7 +11,7 @@ export class SwapiService {
     private http: HttpClient
   ) { }
 
-  getStarships() {
+  getStarships(){
     return this.http.get<any>('https://swapi.dev/api/starships/')
   }
 }

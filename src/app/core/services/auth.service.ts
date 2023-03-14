@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Validators, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from '../interfaces/auth.interface';
 
@@ -42,6 +42,9 @@ export class AuthService {
     if (localStorage.getItem('logged')) {
       return true
     } return false
+  }
+  onLoginClick(){
+    this.router.navigate(['/starships']);
   }
 
   logout() {

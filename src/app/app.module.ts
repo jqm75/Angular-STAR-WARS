@@ -19,6 +19,9 @@ import { FooterComponent } from './layout/footer/footer.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { InfoComponent } from './content/starships/info/info.component';
+import { MenuComponent } from './layout/header/menu/menu.component';
+import { StarsBgComponent } from './shared/stars-bg/stars-bg.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    InfoComponent,
+    MenuComponent,
+    StarsBgComponent
   ],
   imports: [
     BrowserModule,

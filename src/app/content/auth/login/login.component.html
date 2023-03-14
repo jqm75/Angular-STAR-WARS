@@ -1,15 +1,22 @@
-<form [formGroup]="loginForm" class="" (ngSubmit)="login()" autocomplete="off">
-    <div class="form-floating mb-3">
-        <input id="email" class="form-control" type="email" formControlName="email" placeholder="e-mail">
-        <label for="email">e-mail</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input id="password" class="form-control" type="password" formControlName="password" placeholder="Password">
-        <label for="password">Password</label>
-    </div>
-
-    <div class="d-flex align-items-center justify-content-center">
-        <button id="saveForm" type="submit" class="btn btn-primary mx-5 mb-3"> Login </button>
-    </div>
-</form>
+<div class="d-flex justify-content-center">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column gap-3" autocomplete="off">
+        <h1 class="text-center">Login</h1>
+        <div class="form-floating mb-3">
+            <input id="email" class="form-control" type="email" formControlName="email" placeholder="e-mail">
+            <label for="email">e-mail</label>
+            <span class="form-text text-warning" *ngIf="this.loginForm.controls['email'].errors && this.loginForm.controls['email'].touched" >
+                <small>Required this field is.</small></span>
+        </div>
+    
+        <div class="form-floating mb-3">
+            <input id="password" class="form-control" type="password" formControlName="password" placeholder="Password">
+            <label for="password">Password</label>
+            <span class="form-text text-warning" *ngIf="this.loginForm.controls['password'].errors && this.loginForm.controls['password'].touched" >
+                <small>Required this field is. 6 characters contain must.</small></span>
+        </div>
+    
+        <div class="d-flex align-items-center justify-content-center">
+            <button id="saveForm" type="submit" class="btn btn-outline-warning mx-5 mb-3" [disabled]="!loginForm.valid"> Login </button>
+        </div>
+    </form>
+</div>

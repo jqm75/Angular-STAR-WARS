@@ -2,10 +2,10 @@ export interface StarshipsList {
     count:    number;
     next:     string;
     previous: null;
-    results:  Starships[];
+    results:  Starship[];
 }
 
-export interface Starships {
+export interface Starship {
     name:                   string;
     model:                  string;
     manufacturer:           string;

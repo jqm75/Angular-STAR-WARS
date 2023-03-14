@@ -1,22 +1,30 @@
 <header class="d-flex flex-column">
     <div id="main" class="d-flex header justify-content-between">
-        <div class="d-flex header justify-content-between">
-           
-            <span id="header-offset"></span>
-        </div>
 
-        
+        <div class="social d-flex mt-4 ms-3 gap-4">
+            <a class="social-icon" href="http://www.facebook.com/starwars" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a class="social-icon" href="http://www.instagram.com/starwars" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a class="social-icon" href="http://www.youtube.com/starwars" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a class="social-icon" href="http://www.twitter.com/starwars" target="_blank"><i class="bi bi-twitter"></i></a>
+        </div>
+<!--         
+    <div class="d-flex header justify-content-between">
+        <span id="header-offset"></span>
+    </div>
+-->
         <div id="logo" class="d-flex align-items-center justify-content-center">
-    <!--         <a class="logo d-flex align-items-center">
-                <img id="logo_hz" alt="Star Wars" src="../../../assets/img/sw_logo_horiz.webp">
-            </a> -->
-            <a class="logo d-flex align-items-center mt-3">
+<!--         
+            <a class="logo d-flex align-items-center">
+                    <img id="logo_hz" alt="Star Wars" src="../../../assets/img/sw_logo_horiz.webp">
+            </a> 
+-->
+            <a class="logo d-flex align-items-center mt-4">
                 <img id="logo_stacked" alt="Star Wars" src="../../../assets/img/sw_logo_stacked.webp">
             </a>
             
         </div>
 
-        <div id="login" class="d-flex justify-content-end mt-3 me-3 gap-3">
+        <div id="login" class="d-flex justify-content-end mt-4 me-3 gap-4">
             
                 <span *ngIf="!auth?.email">
                     <a class="link-style" [routerLink]="[ '/login' ]">Login</a>
@@ -32,16 +40,6 @@
 
     </div>  
 
-    <div id="menu">
-        <ul class="d-flex flex-md-row justify-content-center aling-items-center gap-4 mt-3">
-            <li>
-                <a class="link-style" [routerLink]="[ '' ]">Home</a>   
-            </li>
-            <li>
-                <a class="link-style" [routerLink]="[ '/starships' ]">Starships</a>   
-            </li>
-        </ul>
-        <hr>
-    </div>
+<app-menu></app-menu>
 
 </header>

@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from 'src/app/core/services/auth.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,6 +22,7 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.loginForm);
+    this.authService.onLoginClick();
   }
 
 }
