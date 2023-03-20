@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { Auth } from '../../core/interfaces/auth.interface';
+import { AuthService } from 'src/app/content/auth/services/auth.service';
+// import { Auth } from '../../core/interfaces/auth.interface';
 
 
 @Component({
@@ -10,9 +10,13 @@ import { Auth } from '../../core/interfaces/auth.interface';
 })
 export class HeaderComponent {
 
+  isLogged: boolean
+
   constructor (
     private authService: AuthService 
-  ) {}
+  ) {
+    this.isLogged = this.authService.isLogged()
+  }
   
   get auth(){
     return this.authService.auth

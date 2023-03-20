@@ -26,13 +26,13 @@
 
         <div id="login" class="d-flex justify-content-end mt-4 me-3 gap-4">
             
-                <span *ngIf="!auth?.email">
+                <span *ngIf="!isLogged">
                     <a class="link-style" [routerLink]="[ '/login' ]">Login</a>
                 </span>
-                <span *ngIf="auth?.email">
+                <span *ngIf="isLogged">
                     <a class="link-style" (click)="logout()">Logout</a>
                 </span>
-                <span class="link-style" [routerLink]="[ '/register' ]" *ngIf="!auth?.email">
+                <span class="link-style" [routerLink]="[ '/register' ]" *ngIf="!isLogged">
                     <img id="user_icon" src="../../../assets/img/sw_Oneid_User.svg"> Sign Up
                 </span>
             

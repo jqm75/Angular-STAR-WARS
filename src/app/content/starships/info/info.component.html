@@ -1,13 +1,28 @@
 <h2 class="d-flex flex-md-row justify-content-center aling-items-center">Esa nave está por aquí, cerquita... muy cerquita</h2>
 
-<div class="d-flex flex-column flex-lg-row">
+<div *ngIf="starship" class="d-flex flex-column flex-lg-row">
     <div id="starship-info-card">
-        <div id="img-card"></div>
-
-        <!-- <img> -->
+        <div id="img-card" ></div> <!-- [ngStyle]="{ 'background-image': 'url(' + starshipImg + ')'}" -->
+        <img [src]="starshipImg" [alt]="starship.name" (error)="getStarshipImgDefault()"/>
         <div class="txt-card">
-            <h1>{{starship.name}}</h1>
-            <h4>{{starship.model}}</h4> 
+            <h1>{{ starship.name }}</h1>
+            <h4>{{ starship.model }}</h4> 
+        </div>
+    </div>
+    <div id="info-card">
+        <div class="text-card d-flex flex-column gap-3">
+            <h4>Starship details</h4>
+            <div>
+                <p class="d-flex justify-content-between gap-4"><b>Starship class:</b> <span class="text-end">{{starship.starship_class}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Cargo capacity:</b> <span class="text-end">{{starship.cargo_capacity}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Consumables:</b> <span class="text-end">{{starship.consumables}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Cost in credits:</b> <span class="text-end">{{starship.cost_in_credits}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Hyperdrive rating:</b> <span class="text-end">{{starship.hyperdrive_rating}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Length:</b> <span class="text-end">{{starship.length}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Manufacturer:</b> <span class="text-end">{{starship.manufacturer}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Max atmosphering speed:</b> <span class="text-end">{{starship.max_atmosphering_speed}}</span></p>
+                <p class="d-flex justify-content-between gap-4"><b>Passengers:</b> <span class="text-end">{{starship.passengers}}</span></p>
+            </div>
         </div>
     </div>
 

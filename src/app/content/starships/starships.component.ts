@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwapiService } from '../../core/services/swapi.service';
+import { SwapiService } from './services/swapi.service';
 import { StarshipsList } from '../../core/interfaces/swapi.starships.interface';
 
 @Component({

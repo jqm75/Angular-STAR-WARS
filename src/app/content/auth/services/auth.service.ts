@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Auth } from '../interfaces/auth.interface';
+import { Auth } from '../../../core/interfaces/auth.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('_auth')
+    localStorage.removeItem('logged')
     this._auth = undefined
     this.router.navigate([''])
   }
