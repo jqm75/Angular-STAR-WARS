@@ -5,12 +5,13 @@
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 @import '../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+@import '../src/app/vars.scss';
 
 body {
     font-family:'DIN Next LT Pro', 'Matterhorn Regular', Helvetica, sans-serif;
     font-weight: normal;
-    color: rgb(160, 160, 160);
-    background-color: black;
+    color: $defaultColor;
+    background-color: $black;
 }
 
 * {
@@ -40,12 +41,12 @@ body {
 
 .link-style {
     text-transform: uppercase;
-    color: rgb(160, 160, 160);
+    color: $defaultColor;
     text-decoration: none; 
     cursor: pointer;
 
         &:hover{
-            color:white;
+            color:$white;
 
             img {
                 border-color: rgb(0, 255, 255);

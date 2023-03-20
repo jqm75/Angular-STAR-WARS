@@ -1,6 +1,11 @@
-<div class="main-container d-flex flex-column p-3" *ngFor="let starship of starships">
-    <a class="starship-card d-flex flex-column">
-        <h4>{{ starship.name }}</h4>
-        <p>{{ starship.model }}</p>
-    </a>
-</div>
+<ng-container *ngIf="starshipsList; else loading">
+    <div class="main-container d-flex flex-column p-3" *ngFor="let starship of starshipsList.results" [routerLink]="['/starships', getStarshipId(starship.url)]" >
+        <span class="starship-card d-flex flex-column">
+            <h4>{{ starship.name }}</h4>
+            <p>{{ starship.model }}</p>
+        </span>
+    </div>
+</ng-container>
+<ng-template #loading>
+    <app-loading></app-loading>
+</ng-template>

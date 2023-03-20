@@ -5,20 +5,23 @@ import { HomeComponent } from './content/home/home.component';
 import { RegisterComponent } from './content/auth/register/register.component';
 import { LoginComponent } from './content/auth/login/login.component';
 import { StarshipsComponent } from './content/starships/starships.component';
+import { InfoComponent } from './content/starships/info/info.component';
 
 
 const routes: Routes = [
-
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'starships', component: StarshipsComponent },
-  { path: '**', redirectTo: '' }
-
+  { path: 'starships/:id', component: InfoComponent },
+  { path: 'info', component: InfoComponent },
+  { path: '**', redirectTo: '' },
+  
+  { path: ':id', component: InfoComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot( routes ) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

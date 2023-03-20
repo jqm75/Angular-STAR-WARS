@@ -12,8 +12,6 @@ import { StarshipsComponent } from './content/starships/starships.component';
 import { RegisterComponent } from './content/auth/register/register.component';
 import { LoginComponent } from './content/auth/login/login.component';
 
-import { SharedComponent } from './shared/shared.component';
-
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 
@@ -21,7 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { InfoComponent } from './content/starships/info/info.component';
 import { MenuComponent } from './layout/header/menu/menu.component';
-import { StarsBgComponent } from './shared/stars-bg/stars-bg.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +27,6 @@ import { StarsBgComponent } from './shared/stars-bg/stars-bg.component';
     HomeComponent,
     StarshipsComponent,
     ContentComponent,
-    SharedComponent,
     AuthComponent,
     HeaderComponent,
     FooterComponent,
@@ -37,7 +34,6 @@ import { StarsBgComponent } from './shared/stars-bg/stars-bg.component';
     LoginComponent,
     InfoComponent,
     MenuComponent,
-    StarsBgComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +41,7 @@ import { StarsBgComponent } from './shared/stars-bg/stars-bg.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    SharedModule,
     NgbModule
   ],
   providers: [],

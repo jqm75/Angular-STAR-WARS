@@ -1,20 +1,24 @@
+@import '../../vars.scss';
+
 .main-container {
     
-    a.starship-card {
+    span.starship-card {
         
         border-radius: 8px;
         padding: 20px 30px;
-        background-color: #1d1e1f;
-        text-decoration: none;
+        background-color: $backgroundColor;
         position: relative;
-        color: rgb(160, 160, 160);
+        color: $defaultColor;
+        text-decoration: none;
+        text-decoration-color: none!important;
 
         &:hover {
-            color: rgb(160,160, 160);
-            background-color: #333;
+            cursor: pointer;
+            color: $defaultColor;
+            background-color:$buttonGray;
             
             h4{
-                color: #fade4b;
+                color: $yellow;
             }
 
         }
