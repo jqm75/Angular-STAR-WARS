@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/content/auth/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent {
 
   public loginForm : FormGroup = this.fb.group({

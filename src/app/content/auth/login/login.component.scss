@@ -1,3 +1,5 @@
+@import '../../../vars.scss';
+
 form{
     width: 100%;
     max-width: 400px;
@@ -6,8 +8,23 @@ form{
         color:  #fade4b; // #ffc107;
         text-transform: uppercase;
     }
-    input,
+
+    input{
+        width: 100%;
+        border-color: $lightGray;
+        
+        &:hover{
+            border-color: $yellow;
+        }
+        &:focus {
+            color: $yellow;
+            border-color: $yellow;
+            background-color: $buttonGray;
+            outline: 0;
+            box-shadow: 0 0 0 0.3rem rgba(255, 225, 0, 0.35);
+        }
+    }
+}
     button{
         width: 100%;
     }
-}

@@ -1,14 +1,16 @@
-<h2 class="d-flex flex-md-row justify-content-center aling-items-center">Esa nave está por aquí, cerquita... muy cerquita</h2>
+<!-- <h2 class="d-flex flex-md-row justify-content-center aling-items-center">Esa nave está por aquí, cerquita... muy cerquita</h2> -->
 
 <div *ngIf="starship" class="d-flex flex-column flex-lg-row">
+
     <div id="starship-info-card">
-        <div id="img-card" ></div> <!-- [ngStyle]="{ 'background-image': 'url(' + starshipImg + ')'}" -->
+        <div id="img-card" [ngStyle]="{ 'background-image': 'url(' + starshipImg + ')'}"></div> <!-- [ngStyle]="{ 'background-image': 'url(' + starshipImg + ')'}" -->
         <img [src]="starshipImg" [alt]="starship.name" (error)="getStarshipImgDefault()"/>
         <div class="txt-card">
             <h1>{{ starship.name }}</h1>
             <h4>{{ starship.model }}</h4> 
         </div>
     </div>
+    
     <div id="info-card">
         <div class="text-card d-flex flex-column gap-3">
             <h4>Starship details</h4>
@@ -25,6 +27,5 @@
             </div>
         </div>
     </div>
-
 
 </div>

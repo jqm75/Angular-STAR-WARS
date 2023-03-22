@@ -22,7 +22,7 @@ export class InfoComponent implements OnInit {
   public films:     Film[] = [];
   
   public starshipImg!: string
-  public starshipImgDefault: string = "../../../../assets/img/default.jpg"
+  public starshipImgDefault: string = "../../../../assets/img/default.webp"
   
   constructor (
     public swapiService: SwapiService,

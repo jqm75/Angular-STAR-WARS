@@ -1,15 +1,14 @@
-<div id="menu" class="mt-5">
+<div id="menu">
     <ul class="d-flex flex-md-row justify-content-center aling-items-center gap-4">
-        <li>
-            <a class="link-style" [routerLink]="[ '' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <li class="link-style">
+            <a [routerLink]="[ '' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 Home
             </a>   
         </li>
-        <li>
-            <a class="link-style" [routerLink]="[ '/starships' ]" routerLinkActive="active">
+        <li class="link-style">
+            <a  [routerLink]="[ '/starships' ]" routerLinkActive="active">
                 Starships
             </a>   
         </li>
     </ul>
-    <hr>
 </div>

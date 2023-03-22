@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from '../../../core/interfaces/auth.interface';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,13 @@ export class AuthService {
   private _auth: Auth | undefined;
   public logged : boolean = false
 
+  public userIsLogged = new Subject<boolean>()
+
   constructor (
     private router:Router
-  ) {}
+  ) {
+    this.userIsLogged.next(false)
+  }
 
   login(loginForm: FormGroup){
     
@@ -30,6 +35,7 @@ export class AuthService {
     
     if(localUser.email === email && localUser.password === password){
       localStorage.setItem( 'logged','true' )
+      this.userIsLogged.next(true)
       this.router.navigate([''])
     }
   }
@@ -49,6 +55,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('logged')
+    this.userIsLogged.next(false)
     this._auth = undefined
     this.router.navigate([''])
   }

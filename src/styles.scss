@@ -7,6 +7,8 @@
 @import '../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
 @import '../src/app/vars.scss';
 
+
+
 body {
     font-family:'DIN Next LT Pro', 'Matterhorn Regular', Helvetica, sans-serif;
     font-weight: normal;
@@ -37,6 +39,25 @@ body {
         }
     }
     
+}
+#content {
+
+min-height: calc(100vh - 188px);
+}
+
+::-moz-selection { 
+    color: $black;
+    background: $yellow;
+}
+
+::selection {
+    color: $black;
+    background: $yellow;
+}
+
+.text-warning {
+    --bs-text-opacity: 1;
+    color: rgba($yellow, var(--bs-text-opacity)) !important;
 }
 
 .link-style {
