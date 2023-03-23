@@ -17,8 +17,8 @@ export class SwapiService {
   private _url = 'https://swapi.py4e.com/api/starships'
 
   public starship!: StarshipsList;
-  public pilots: PilotsList[] = [];
-  public films: FilmsList[] = [];
+  public pilots:    PilotsList[] = [];
+  public films:     FilmsList[] = [];
 
   constructor( private http: HttpClient ) { }
 
@@ -30,5 +30,10 @@ export class SwapiService {
 
     return this.http.get<Starship>(`${this._url}/${id}`)
   } 
+
+  checkImageExists(imageURL: string):Observable<any> {
+    return this.http.get<any>(imageURL)
+    
+  }
 
 }

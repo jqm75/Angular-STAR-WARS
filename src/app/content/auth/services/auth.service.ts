@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { Auth } from '../../../core/interfaces/auth.interface';
 import { Subject } from 'rxjs';
 
@@ -59,5 +60,20 @@ export class AuthService {
     this._auth = undefined
     this.router.navigate([''])
   }
+
+  checkEmail() {
+    
+    let email = localStorage.getItem("email");
+    
+    if (email === null) {
+      
+      alert("El correo electrónico no existe en el localStorage");
+      return null;
+    } else {
+      
+      return email;
+    }
+  }
+
 }
 

@@ -21,8 +21,8 @@ export class InfoComponent implements OnInit {
   public pilots:    Pilot[] = [];
   public films:     Film[] = [];
   
-  public starshipImg!: string
-  public starshipImgDefault: string = "../../../../assets/img/default.webp"
+  public starshipImg: string = "../../../../assets/img/default.webp"
+  /* public starshipImgDefault: string = "../../../../assets/img/default.webp" */
   
   constructor (
     public swapiService: SwapiService,
@@ -35,16 +35,25 @@ export class InfoComponent implements OnInit {
     this.swapiService.getStarshipInfo(this.id).subscribe( resp => {
       
       console.log(resp);
-
       this.starship = resp;
       
     })
 
     this.starshipImg = `https://starwars-visualguide.com/assets/img/starships/${this.id}.jpg`
+
+    this.swapiService.checkImageExists(this.starshipImg).subscribe({next: resp => {alert(true)}, error: error => {
+      
+      if (error.status != 200) {
+        this.starshipImg = "../../../../assets/img/default.webp"
+      } 
+    
+    }})
+    
+
   }
   
   getStarshipImgDefault(){
-    this.starshipImg = this.starshipImgDefault
+    //this.starshipImg = this.starshipImgDefault
   }
 
 }

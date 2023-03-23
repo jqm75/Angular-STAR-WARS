@@ -6,7 +6,9 @@
     overflow: hidden;
     background-color: $darkGray;
 
-    #image-card{
+    #img-card{
+        height: 500px;
+        background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
         padding-bottom: 60%;
@@ -37,7 +39,7 @@
     flex-shrink: 3;
     overflow: hidden;
     background-color: $darkGray;
-    .text-card{
+    .txt-card{
         position: relative;
         padding: 30px;
         &::before{
