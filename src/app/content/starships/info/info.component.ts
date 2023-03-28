@@ -5,7 +5,7 @@ import { SwapiService } from '../services/swapi.service';
 
 import { Starship, StarshipsList } from 'src/app/core/interfaces/swapi.starships.interface';
 import { Film } from 'src/app/core/interfaces/swapi.films.interface';
-import { Pilot } from '../../../core/interfaces/swapi.pilots.interface';
+import { Pilot, PilotsList } from '../../../core/interfaces/swapi.pilots.interface';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class InfoComponent implements OnInit {
   public pilots:    Pilot[] = [];
   public films:     Film[] = [];
   
+  
   public starshipImg: string = "../../../../assets/img/default.webp"
   /* public starshipImgDefault: string = "../../../../assets/img/default.webp" */
   
@@ -29,13 +30,16 @@ export class InfoComponent implements OnInit {
     private route:       ActivatedRoute
   ){}
 
-  ngOnInit (): void {
+  /* ngOnInit (): void {
 
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.swapiService.getStarshipInfo(this.id).subscribe( resp => {
       
-      console.log(resp);
-      this.starship = resp;
+      console.log(resp.pilots)
+      
+      this.starship = resp
+      this.pilots   = this.swapiService.getPilots(resp.pilots)
+      //this.films    = 
       
     })
 
@@ -50,10 +54,42 @@ export class InfoComponent implements OnInit {
     }})
     
 
+  } */
+
+  ngOnInit(): void {
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.swapiService.getStarshipInfo(this.id).subscribe(resp => {
+      this.starship = resp;
+      for (const pilotUrl of resp.pilots) {
+        const pilotId = this.swapiService.getPilotIdFromUrl(pilotUrl);
+        this.swapiService.getPilot(pilotId).subscribe(pilot => {
+          this.pilots.push(pilot);
+        });
+      }
+    });
+  
+    this.starshipImg = `https://starwars-visualguide.com/assets/img/starships/${this.id}.jpg`;
+  
+    this.swapiService.checkImageExists(this.starshipImg).subscribe({
+      next: resp => {
+        alert(true);
+      },
+      error: error => {
+        if (error.status != 200) {
+          this.starshipImg = '../../../../assets/img/default.webp';
+        }
+      },
+    });
   }
   
   getStarshipImgDefault(){
     //this.starshipImg = this.starshipImgDefault
+  }
+
+  getPilotId(url: string){
+
+    return url.split('/')[5]
+    
   }
 
 }

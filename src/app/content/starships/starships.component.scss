@@ -1,29 +1,62 @@
 @import '../../vars.scss';
 
-.main-container {
+
+
+.starshipList {
     overflow: hidden;
-    border-radius: 8px;
     z-index: 0;
+
     
-    span.starship-card {
+    a.starship-card {
         
-        border-radius: 8px;
+        border-radius: 0px 8px 8px 0px;
+        width: calc(100% - 10px);
         padding: 20px 30px;
         background-color: $backgroundColor;
         position: relative;
         color: $defaultColor;
         text-decoration: none;
-        text-decoration-color: none!important;
-
+        text-decoration-color: none;
+        
+        p{
+            margin-bottom: 0;
+        }
+        
         &:hover {
             cursor: pointer;
             color: $defaultColor;
-            background-color:$buttonGray;
+            background-color: $buttonGray;
             
             h4{
                 color: $yellow;
             }
 
+            &::after,
+            &::before{
+                border-right-color: $buttonGray;
+            }
+        }
+
+        &::after, 
+        &::before{
+            content: ""; 
+            display: block;
+            position: absolute;
+            height: 33%;
+            width: 0px;
+            top: 0;
+            left: -6px;
+            border-radius: 8px 0px 0px 8px;
+            border-right: 6px solid $backgroundColor;
+            border-left: none;
+            border-bottom: 6px solid transparent;
+        }
+        &::before{
+            bottom: 0;
+            top: auto;
+            border-left: none;
+            border-top: 6px solid transparent;
+            border-bottom: none;
         }
     }
 
