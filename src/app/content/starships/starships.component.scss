@@ -1,6 +1,9 @@
 @import '../../vars.scss';
 
 .main-container {
+    overflow: hidden;
+    border-radius: 8px;
+    z-index: 0;
     
     span.starship-card {
         

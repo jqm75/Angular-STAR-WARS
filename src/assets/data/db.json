@@ -1,0 +1,25 @@
+{
+  "user": [
+    {
+      "email": "mail@mail.com",
+      "firstname": "John",
+      "surname": "Doe",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "email": "correo@correo.es",
+      "firstname": "Juan",
+      "surname": "Nadie",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "email": "hola@paco.jones",
+      "firstname": "Paco",
+      "surname": "Jones",
+      "password": "123456",
+      "id": 3
+    }
+  ]
+}

@@ -3,18 +3,15 @@
 
 #menu {
 
-    border-right: 1px solid $gray;
     background-color: $black;
     width: 100%;
     padding: 30px 32px 5px 32px;
-    
     border-bottom: 1px solid $gray;
 
     a{
         color: $lightGray;
         text-decoration: none;
         position: relative;
-        ;
 
         &::before {
             content: '';

@@ -9,8 +9,24 @@ form{
         text-transform: uppercase;
     }
     
-    button{
+    .btn{
         width: 100%;
+
+        &:disabled{
+            border-color: $yellow;;
+            color: $yellow;
+            background-color:transparent;
+        }
+        &:not(:disabled){
+            border-color: $yellow;;
+            color: $yellow;
+            background-color:transparent;
+        }
+        &:hover{
+            color: $black;
+            background-color: $yellow;
+        }
+
     }
 
     input{
