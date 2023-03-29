@@ -41,7 +41,7 @@ export class SwapiService {
     return this.http.get<PilotsList>(`${this._url}/people/${pilots}`)
   } */
 
-  // LO NUEVO
+  // LO NUEVO para PILOTOS y FILMS
   getPilot(id: number): Observable<Pilot> {
     return this.http.get<Pilot>(`${this._url}/people/${id}`)
   }
@@ -50,10 +50,15 @@ export class SwapiService {
     const pilotId = url.split('/');
     return parseInt( pilotId[ pilotId.length - 2 ] );
   }
-  // FIN DE LO NUEVO
-
-  getFilms(){
-    return this.http.get<FilmsList>(`${this._url}/films`)
+  
+  getFilm(id: number): Observable<Film>{
+    return this.http.get<Film>(`${this._url}/films/${id}`)
   }
+  
+  getFilmIdFromUrl(url: string): number {
+    const filmId = url.split('/');
+    return parseInt( filmId[ filmId.length - 2 ] );
+  }
+  // FIN DE LO NUEVO
 
 }

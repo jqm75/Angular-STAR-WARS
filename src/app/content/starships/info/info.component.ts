@@ -30,42 +30,30 @@ export class InfoComponent implements OnInit {
     private route:       ActivatedRoute
   ){}
 
-  /* ngOnInit (): void {
-
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.swapiService.getStarshipInfo(this.id).subscribe( resp => {
-      
-      console.log(resp.pilots)
-      
-      this.starship = resp
-      this.pilots   = this.swapiService.getPilots(resp.pilots)
-      //this.films    = 
-      
-    })
-
-    this.starshipImg = `https://starwars-visualguide.com/assets/img/starships/${this.id}.jpg`
-
-    this.swapiService.checkImageExists(this.starshipImg).subscribe({next: resp => {alert(true)}, error: error => {
-      
-      if (error.status != 200) {
-        this.starshipImg = "../../../../assets/img/default.webp"
-      } 
-    
-    }})
-    
-
-  } */
-
   ngOnInit(): void {
+
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+
     this.swapiService.getStarshipInfo(this.id).subscribe(resp => {
+
+      console.log('🚀 ~ file: info.component.ts:63 ~ InfoComponent ~ this.swapiService.getStarshipInfo ~ resp:', resp)
+
       this.starship = resp;
+
       for (const pilotUrl of resp.pilots) {
         const pilotId = this.swapiService.getPilotIdFromUrl(pilotUrl);
         this.swapiService.getPilot(pilotId).subscribe(pilot => {
           this.pilots.push(pilot);
         });
       }
+
+      for (const filmUrl of resp.films) {
+        const filmId = this.swapiService.getPilotIdFromUrl(filmUrl);
+        this.swapiService.getFilm(filmId).subscribe(film => {
+          this.films.push(film);
+        });
+      }
+
     });
   
     this.starshipImg = `https://starwars-visualguide.com/assets/img/starships/${this.id}.jpg`;
@@ -80,16 +68,18 @@ export class InfoComponent implements OnInit {
         }
       },
     });
+
   }
   
-  getStarshipImgDefault(){
-    //this.starshipImg = this.starshipImgDefault
-  }
+  /* getStarshipImgDefault(){
+    this.starshipImg = this.starshipImgDefault
+  } */
 
   getPilotId(url: string){
-
     return url.split('/')[5]
-    
   }
 
+  getFilmId(url: string){
+    return url.split('/')[5]
+  }
 }

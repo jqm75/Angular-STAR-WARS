@@ -27,9 +27,15 @@
     <div class="d-grid gap-3 mt-3" *ngIf="pilots.length > 0">
         <span *ngFor="let pilot of pilots">
             <p>{{pilot.name}}</p>
-            
+    
         </span>
     </div>
     <h2 class="mt-5">Films</h2>
+    <div class="d-grid gap-3 mt-3">
+        <span *ngFor="let film of films">
+            <p>Episode {{film.episode_id}}: {{film.title}}</p>
+    
+        </span>
+    </div>
 
 </div>
