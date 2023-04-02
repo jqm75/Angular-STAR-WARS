@@ -1,45 +1,72 @@
 @import '../../../vars.scss';
 
-#starship-info-card{
+.mini-saber {
+    color: $white;
+    display: block;
+    padding-top:10px;
+    
+    &::before, &::after{
+        margin-top: -12px;
+        position: absolute;
+        content: "";
+        height: 5px;
+        width: 45px;
+        border-radius: 3px;
+        border-left: 30px solid $lightGray;
+        border-right: 10px solid $lightGray;
+        box-shadow: 4px 0 8px 0px rgb(0 0 0 / 0%);
+    }
+}
+
+.pilot-info, .film-info {
+    &:hover{
+        .mini-saber {
+            &::before, &::after {
+                border-left: 30px solid $white;
+                border-right: 10px solid $white;
+                box-shadow: -15px 0px 10px 0px rgb(255, 255, 255);
+            }
+        }
+    }
+}
+
+#starship-info{
+    
     border-radius: 8px 8px 0 0;
-    flex-grow: 1;
     overflow: hidden;
     background-color: $darkGray;
-
-    #img-card{
-        height: 500px;
+    flex-grow: 1;
+    .img-starship{
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
         padding-bottom: 60%;
-        margin-bottom: 10px;
-        border-bottom: 2px solid $yellow;
+        /* margin-bottom: 10px; */
         position: relative;
-        &::before{
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 50px;
-        }
     }
-
-    .txt-card{
+    .txt-info{
         padding: 30px;
+        
         h1{
             text-transform: uppercase;
             color: $white;
             margin-bottom: 20px;
         }
     }
-
+    @media (min-width: 992px) {
+        border-radius: 8px 0 0 8px;
+    }
 }
 
-#info-card{
-    border-radius: 0 0 8px 8px;
+#starship-description{
+    
+    border-radius: 0px 0px 8px 8px;
     flex-shrink: 3;
     overflow: hidden;
     background-color: $darkGray;
-    .txt-card{
+    
+    
+    .txt-description {
         position: relative;
         padding: 30px;
         &::before{
@@ -62,14 +89,101 @@
                 max-width: 400px;
             }
         }
+
     }
+    /* .notch{
+        display: flex;
+        justify-content: space-between;
+        &::before{
+            content: "";
+            display: block;
+            border-bottom: 5px solid $yellow;
+            border-right: 5px solid transparent;
+            width: 50%;
+            height: 5px;
+        }
+        &::after{
+            content: "";
+            display: block;
+            border-bottom: 5px solid $yellow;
+            border-left: 5px solid transparent;
+            width: 20%;
+            height: 5px;
+        }
+    } */
     
     @media (min-width: 992px) {
-        border-radius: 0 8px 8px 0;
+        border-radius: 0px 8px 8px 0px;
     }
+    
 }
+
+
 
 h2 {
     color: $white;
     text-transform: uppercase;
+}
+
+#extra-info-pilots {
+    .pilot-info{
+        width: calc(33.333% - 8px);
+    }
+    .pilot-img{
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    h2 {
+        text-align: start;
+        font-size: 24px;
+        font-weight: 500;
+        color: $white;
+        display: block;
+        padding: 10px;
+        text-transform: uppercase;
+    }
+    div p {
+        display: inline-block;
+        font-weight: 500;
+        color: $white;
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        
+    }
+}
+
+#extra-info-films {
+    
+    .film-info{
+        width: calc(33.333% - 8px);
+    }
+    .film-img{
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    h2 {
+        text-align: start;
+        font-size: 24px;
+        font-weight: 500;
+        color: $white;
+        display: block;
+        padding: 10px;
+        text-transform: uppercase;
+    }
+    div p {
+        display: inline-block;
+        font-weight: 500;
+        color: $white;
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+        
+    }
 }

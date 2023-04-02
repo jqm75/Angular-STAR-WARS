@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     this.authService.onLoginClick();
     this.mailMessage = ''
     this.passwordMessage = ''
-    emailExist ? this.passwordMessage = 'La contraseña no es correcta' : this.mailMessage = 'El email no existe'
+    emailExist ? this.passwordMessage = 'The wrong password is' : this.mailMessage = 'In an even further galaxy this email is'
     
     /* if (this.emailIsValid ){
       this.isInLocalStorage = false

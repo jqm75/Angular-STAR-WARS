@@ -6,6 +6,8 @@ export interface PilotsList {
 }
 
 export interface Pilot {
+    id?:        number;
+    imgUrl?:    string;
     name:       string;
     height:     string;
     mass:       string;

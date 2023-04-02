@@ -7,12 +7,30 @@
 @import '../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
 @import '../src/app/vars.scss';
 
+app-header{
+    background-color: $black;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
 
 body {
     font-family:'DIN Next LT Pro', 'Matterhorn Regular', Helvetica, sans-serif;
     font-weight: normal;
     color: $defaultColor;
     background-color: $black;
+}
+
+.container{
+    display: flex;
+    flex: 1;
+    margin-top: 175px;
+    margin-bottom: 80px;
+    
+    @media (min-width: 768px) {
+        margin-top: 240px;
+        margin-bottom: 80px;
+    }
 }
 
 * {
@@ -40,8 +58,7 @@ body {
     
 }
 #content {
-
-min-height: calc(100vh - 188px);
+    min-height: calc(100vh - 188px);
 }
 
 ::-moz-selection { 

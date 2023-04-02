@@ -36,8 +36,6 @@ export class SwapiService {
   }
 
   /* getPilots( pilots: string[] ) {
-
-    
     return this.http.get<PilotsList>(`${this._url}/people/${pilots}`)
   } */
 
