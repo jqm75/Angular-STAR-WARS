@@ -36,7 +36,7 @@ export class SwapiService {
         response.results = remainingResults;
         return response;
       }),
-      delay(1000)
+      delay(500)
     );
   }
   
