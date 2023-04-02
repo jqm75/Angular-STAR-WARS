@@ -1,7 +1,7 @@
 export interface StarshipsList {
     count:    number;
-    next:     string;
-    previous: null;
+    next: string | null;
+    previous: string | null;
     results:  Starship[];
 }
 
@@ -24,5 +24,6 @@ export interface Starship {
     created:                Date;
     edited:                 Date;
     url:                    string;
+    _delayed:               boolean;
 }
 

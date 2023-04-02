@@ -125,6 +125,16 @@ h2 {
     text-transform: uppercase;
 }
 
+h2 {
+    text-align: start;
+    font-size: 24px;
+    font-weight: 500;
+    color: $white;
+    display: block;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
 #extra-info-pilots {
     .pilot-info{
         width: calc(33.333% - 8px);
@@ -137,15 +147,6 @@ h2 {
         background-position: center center;
         background-size: cover;
     }
-    h2 {
-        text-align: start;
-        font-size: 24px;
-        font-weight: 500;
-        color: $white;
-        display: block;
-        padding: 10px;
-        text-transform: uppercase;
-    }
     div p {
         display: inline-block;
         font-weight: 500;
@@ -154,6 +155,11 @@ h2 {
         line-height: 1.5rem;
         
     }
+
+    @media (min-width: 762px) {
+        width: calc(25% - 8px);
+    }
+
 }
 
 #extra-info-films {
@@ -169,15 +175,7 @@ h2 {
         background-position: center center;
         background-size: cover;
     }
-    h2 {
-        text-align: start;
-        font-size: 24px;
-        font-weight: 500;
-        color: $white;
-        display: block;
-        padding: 10px;
-        text-transform: uppercase;
-    }
+    
     div p {
         display: inline-block;
         font-weight: 500;
