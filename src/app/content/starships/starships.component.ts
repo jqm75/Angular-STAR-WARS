@@ -29,7 +29,7 @@ export class StarshipsComponent implements OnInit {
       this.starshipsList.results = [...this.starshipsList.results, ...starshipsList.results];
       if(starshipsList.next){
         this.page = Number(starshipsList.next?.split('=')[1]);
-        console.log(starshipsList.next?.split('=')[1]);
+        //console.log(starshipsList.next?.split('=')[1]);
       } else {
         this.page = null;
       }

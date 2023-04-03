@@ -41,6 +41,7 @@ export class AuthService {
       
       if(user.email === email ){
         if(user.password === password){
+          console.log('User Mail & Password is OK. The user is Logged right now.')
           localStorage.setItem( 'logged','true' )
           this.userIsLogged.next(true)
           this.router.navigate([''])
@@ -58,8 +59,11 @@ export class AuthService {
   
   isLogged() {
     if (localStorage.getItem('logged')) {
+      console.log('The user is Logged')
       return true
-    } return false
+    } 
+      console.log('The user is not Logged');
+      return false
   }
   onLoginClick(){
     this.router.navigate(['/starships']);
@@ -69,6 +73,7 @@ export class AuthService {
     localStorage.removeItem('logged')
     this.userIsLogged.next(false)
     this._auth = undefined
+    console.log('The user is unlogged')
     this.router.navigate([''])
   }
 

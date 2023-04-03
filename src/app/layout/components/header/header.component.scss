@@ -4,6 +4,13 @@ header {
     position: sticky;
 }
 
+#logo {
+    padding-top: 20px;
+
+    @media (min-width: 768px) {
+        padding-top: 0;
+    }
+}
 #logo_hz {
     max-height: 20px;
     width: auto;
@@ -16,7 +23,10 @@ header {
 
 #login {
     text-transform: uppercase;
-    min-width: 200px;
+    
+    @media (min-width: 576px) {
+        min-width: 200px;
+    }
 }
 
 #social {
