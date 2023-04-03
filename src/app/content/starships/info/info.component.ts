@@ -37,7 +37,7 @@ export class InfoComponent implements OnInit {
 
     this.swapiService.getStarshipInfo(this.id).subscribe(resp => {
 
-      console.log('🚀 ~ file: info.component.ts:40 ~ InfoComponent ~ this.swapiService.getStarshipInfo ~ resp:', resp)
+      //console.log('🚀 ~ file: info.component.ts:40 ~ InfoComponent ~ this.swapiService.getStarshipInfo ~ resp:', resp)
 
       this.starship = resp;
 

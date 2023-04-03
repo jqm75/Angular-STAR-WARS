@@ -1,4 +1,4 @@
-/* import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { SwapiService } from './services/swapi.service';
 import { StarshipsList } from '../../core/interfaces/swapi.starships.interface';
 
@@ -7,41 +7,14 @@ import { StarshipsList } from '../../core/interfaces/swapi.starships.interface';
   templateUrl: './starships.component.html',
   styleUrls: ['./starships.component.scss']
 })
-export class StarshipsComponent  {
 
-  public starshipsList! : StarshipsList
-
-  constructor (
-    public swapiService: SwapiService
-  ){
-    this.swapiService.getStarships().subscribe( resp => { 
-
-        this.starshipsList = resp
-        
-    })
-  }
-
-  getStarshipId(url: string){
-
-    return url.split('/')[5]
-    
-  }
-
-
-} */
-
-import { Component, OnInit } from '@angular/core';
-import { SwapiService } from './services/swapi.service';
-import { StarshipsList } from '../../core/interfaces/swapi.starships.interface';
-
-@Component({
-  selector: 'app-starships',
-  templateUrl: './starships.component.html',
-  styleUrls: ['./starships.component.scss']
-})
 export class StarshipsComponent implements OnInit {
   public starshipsList: StarshipsList = { count: 0, next: null, previous: null, results: [] };
-  public page = 1;
+  public page: number | null = 1;
+  
+  @Input() showClasses: boolean = true;
+
+  @ViewChild('loading', {static: false}) private loading!: ElementRef<HTMLDivElement>;
 
   constructor(private swapiService: SwapiService) {}
 
@@ -50,27 +23,28 @@ export class StarshipsComponent implements OnInit {
     window.addEventListener('scroll', this.onScroll.bind(this));
   }
 
-  getStarships(page?: number) {
-    this.swapiService.getStarships(page)
-      .subscribe(starshipsList => {
-        if (page) {
-          this.starshipsList.results = [...this.starshipsList.results, ...starshipsList.results];
-        } else {
-          this.starshipsList = starshipsList;
-        }
-      });
+  getStarships(page: number = 1) {
+    this.swapiService.getStarships(page).subscribe(starshipsList => {
+        
+      this.starshipsList.results = [...this.starshipsList.results, ...starshipsList.results];
+      if(starshipsList.next){
+        this.page = Number(starshipsList.next?.split('=')[1]);
+        console.log(starshipsList.next?.split('=')[1]);
+      } else {
+        this.page = null;
+      }
+      
+    });
   }
 
   onScroll() {
-    const scrollPosition = window.pageYOffset;
-    const windowSize = window.innerHeight;
-    const bodyHeight = document.body.offsetHeight;
-
-    const scrollThreshold = bodyHeight - windowSize - 2500;
-
-    if (scrollPosition > scrollThreshold && this.starshipsList.next !== null) {
-      this.page++;
-      this.getStarships(this.page);
+    if (this.page != null) {
+      
+      const rect = this.loading.nativeElement.getBoundingClientRect();
+      const bottomShown = rect.bottom <= window.innerHeight;
+      if(bottomShown){
+        this.getStarships(this.page);
+      }
     }
   }
 

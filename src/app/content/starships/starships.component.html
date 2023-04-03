@@ -1,13 +1,19 @@
-<ng-container *ngIf="starshipsList; else loading">
-    <div class="d-flex flex-column starshipList pt-5 gap-3" (scroll)="onScroll()">
-        <div class="d-flex flex-column align-items-end" *ngFor="let starship of starshipsList.results" [routerLink]="['/starships', getStarshipId(starship.url)]">
-            <a [class.slow]="starship._delayed" class="starship-card d-flex flex-column">
+<ng-container *ngIf="starshipsList"> <!-- ; else loading -->
+    <div class="d-flex flex-column starshipList gap-3" (scroll)="onScroll()">
+        <div [id]="'starshipElement-' + index" class="d-flex flex-column align-items-end" *ngFor="let starship of starshipsList.results; let index = index" [routerLink]="['/starships', getStarshipId(starship.url)]">
+            <a class="starship-card d-flex flex-column">
                 <h4>{{ starship.name }}</h4>
                 <p>{{ starship.model }}</p>
             </a>
         </div>
     </div>
+    <div id="loading" *ngIf="page" #loading [ngClass]="{'h-20rem': showClasses, 'flex': showClasses, 'justify-content-center': showClasses, 'align-items-end': showClasses}">
+        <div class="lds-ellipsis justify-content-center">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 </ng-container>
-<ng-template class="loading" #loading>
-    <app-loading></app-loading>
-</ng-template>
+

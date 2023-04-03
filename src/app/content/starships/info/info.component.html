@@ -1,7 +1,7 @@
 <!-- STARSHIP -->
-<div class="d-flex flex-column flex-lg-row gap-1">  
+<div class="d-flex flex-column flex-lg-row gap-1" *ngIf="starship">  
 
-    <div id="starship-info" *ngIf="starship">
+    <div id="starship-info">
         <div class="img-starship" [ngStyle]="{ 'background-image': 'url(' + starshipImg + ')'}"></div>
         <div class="txt-info"> 
             <span class="mini-saber"></span>
@@ -12,7 +12,7 @@
 
 
     <div id="starship-description" >
-        <div class="txt-description  d-flex flex-column gap-3">
+        <div class="txt-description d-flex flex-column gap-3">
             <h4>Starship details</h4>
             <div>
                 <p class="d-flex justify-content-between gap-4"><b>Starship class:</b> <span class="text-end">{{starship.starship_class}}</span></p>
@@ -34,8 +34,8 @@
 
 <!-- PILOTS -->
 <h2 class="mt-5" *ngIf="pilots.length > 0">Pilots</h2> 
-<div id="extra-info-pilots" class="d-flex">
-    <div class="d-flex flex-wrap justify-content-between mt-3" *ngIf="pilots.length > 0">
+<div id="extra-info-pilots" class="d-flex w-100">
+    <div class="d-flex flex-wrap justify-content-between mt-3 w-100" *ngIf="pilots.length > 0">
         <div class="pilot-info" *ngFor="let pilot of pilots">
             <img class="pilot-img" [src]="pilot.imgUrl" alt="{{ pilot.name }}">
             <span class="mini-saber mt-3 ms-3"></span>
@@ -46,8 +46,8 @@
 
 <!-- FILMS -->
 <h2 class="mt-5">Films</h2>
-<div id="extra-info-films" class="d-flex">
-    <div class="d-flex flex-wrap justify-content-between mt-3">
+<div id="extra-info-films" class="d-flex w-100">
+    <div class="d-flex flex-wrap justify-content-between mt-3 w-100">
         <div class="film-info" *ngFor="let film of films">
             <img class="film-img" [src]="film.filmUrl" alt="{{ film.title }}">
             <span class="mini-saber mt-3 ms-3"></span>

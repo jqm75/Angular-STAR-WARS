@@ -65,6 +65,9 @@
     overflow: hidden;
     background-color: $darkGray;
     
+    @media (min-width: 992px) {
+        min-width: 470px;
+    }
     
     .txt-description {
         position: relative;
@@ -88,6 +91,10 @@
             @media (min-width: 992px) {
                 max-width: 400px;
             }
+        }
+
+        span{
+            max-width: 300px;
         }
 
     }
@@ -135,11 +142,19 @@ h2 {
     text-transform: uppercase;
 }
 
-#extra-info-pilots {
-    .pilot-info{
-        width: calc(33.333% - 8px);
+#extra-info-pilots, #extra-info-films {
+    .pilot-info, .film-info{
+        width: calc(50% - 8px);
+
+        @media (min-width: 576px) {
+            width: calc(33.333% - 8px);
+        }
+
+        @media (min-width: 768px) {
+            width: calc(25% - 8px);
+        }
     }
-    .pilot-img{
+    .pilot-img, .film-img{
         border-radius: 10px;
         width: 100%;
         height: auto;
@@ -156,32 +171,5 @@ h2 {
         
     }
 
-    @media (min-width: 762px) {
-        width: calc(25% - 8px);
-    }
 
-}
-
-#extra-info-films {
-    
-    .film-info{
-        width: calc(33.333% - 8px);
-    }
-    .film-img{
-        border-radius: 10px;
-        width: 100%;
-        height: auto;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-    }
-    
-    div p {
-        display: inline-block;
-        font-weight: 500;
-        color: $white;
-        font-size: 1.125rem;
-        line-height: 1.5rem;
-        
-    }
 }

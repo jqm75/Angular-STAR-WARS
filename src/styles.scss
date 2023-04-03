@@ -22,15 +22,11 @@ body {
 }
 
 .container{
+    flex-direction: column;
     display: flex;
     flex: 1;
-    margin-top: 175px;
+    margin-top: 250px;
     margin-bottom: 80px;
-    
-    @media (min-width: 768px) {
-        margin-top: 240px;
-        margin-bottom: 80px;
-    }
 }
 
 * {
@@ -57,6 +53,7 @@ body {
     }
     
 }
+
 #content {
     min-height: calc(100vh - 188px);
 }

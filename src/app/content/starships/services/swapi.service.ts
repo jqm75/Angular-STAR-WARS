@@ -21,7 +21,7 @@ export class SwapiService {
 
   constructor(private http: HttpClient) { }
 
-  getStarships(page: number = 1): Observable<StarshipsList> {
+  /* getStarships(page: number = 1): Observable<StarshipsList> {
     const url = `${this._url}/starships?page=${page}`;
     return this.http.get<StarshipsList>(url).pipe(
       map(response => {
@@ -36,10 +36,14 @@ export class SwapiService {
         response.results = remainingResults;
         return response;
       }),
-      delay(500)
+    
     );
-  }
+  } */
   
+  getStarships(page:number = 1){
+    return this.http.get<StarshipsList>(`${this._url}/starships/?page=${page}`)
+  }
+
   getStarshipInfo(id: number): Observable<Starship> {
     return this.http.get<Starship>(`${this._url}/starships/${id}`)
   }
