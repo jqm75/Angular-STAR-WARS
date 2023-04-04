@@ -1,5 +1,6 @@
 # S8-Angular: STAR WARS
 
+![Budget](src/assets/img/SW.jpg "STAR WARS")
 
 
 This project consists of creating a website inspired by the official STAR WARS website. Consumes data from the STAR WARS API to display a list of ships with all associated details.
