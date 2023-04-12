@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from 'src/app/core/interfaces/user.interface';
-import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector   : 'app-register',
@@ -26,7 +26,7 @@ export class RegisterComponent {
   constructor (
     private fb: FormBuilder,
     private http: HttpClient,
-    private router:Router
+    private authService: AuthService
   ) {}
 
   saveRegisterForm (){
@@ -38,9 +38,8 @@ export class RegisterComponent {
     }
     this.http.post(this.url, this.user).subscribe()
     this.http.get(this.url).subscribe( users => console.log(users) )
-    this.router.navigate(['/login']);
-
-    // localStorage.setItem('user', JSON.stringify(this.user))
+    
+    this.authService.loginFromSignIn()
   }
 
 }

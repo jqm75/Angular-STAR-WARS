@@ -34,9 +34,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    //this.emailIsValid = this.authService.checkEmail();
-    //this.checkEmail();
-    
+  
     let email = this.authService.checkEmail();
     if (typeof email === "string" && email ) {
       this.emailIsValid = true;
@@ -48,14 +46,9 @@ export class LoginComponent implements OnInit {
   login() {
     const emailExist = this.authService.login(this.loginForm);
     this.authService.onLoginClick();
-    this.mailMessage = ''
-    this.passwordMessage = ''
-    emailExist ? this.passwordMessage = 'The wrong password is' : this.mailMessage = 'In an even further galaxy this email is'
-    
-    /* if (this.emailIsValid ){
-      this.isInLocalStorage = false
-    } */
-    
+    this.mailMessage = '';
+    this.passwordMessage = '';
+    emailExist ? this.passwordMessage = 'The wrong password is' : this.mailMessage = 'In an even further galaxy this email is';  
   }
 
   checkEmail() {

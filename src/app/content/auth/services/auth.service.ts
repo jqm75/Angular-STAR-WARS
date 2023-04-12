@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { Auth } from '../../../core/interfaces/auth.interface';
-import { Subject } from 'rxjs';
 import { User } from 'src/app/core/interfaces/user.interface';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthService {
   private _auth          : Auth | undefined
   public logged          : boolean = false
   public isInLocalStorage: boolean = false
-  public url: string = 'http://localhost:3000/user'
+  public url             : string = 'http://localhost:3000/user'
 
   public userIsLogged = new Subject<boolean>()
   public usersData: User[] = []
@@ -38,7 +38,6 @@ export class AuthService {
 
     this.usersData.forEach(user => {
 
-      
       if(user.email === email ){
         if(user.password === password){
           console.log('User Mail & Password is OK. The user is Logged right now.')
@@ -48,9 +47,18 @@ export class AuthService {
         }
         emailExist = true
       }
-      
+
     })
+    
     return emailExist
+  }
+
+  loginFromSignIn(){
+    
+    localStorage.setItem( 'logged','true' )
+    this.userIsLogged.next(true)
+    this.router.navigate(['/starships'])
+
   }
 
   get auth() {

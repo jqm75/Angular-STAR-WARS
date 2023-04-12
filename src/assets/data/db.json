@@ -6,48 +6,6 @@
       "surname": "Doe",
       "password": "123456",
       "id": 1
-    },
-    {
-      "email": "correo@correo.es",
-      "firstname": "Juan",
-      "surname": "Nadie",
-      "password": "123456",
-      "id": 2
-    },
-    {
-      "email": "hola@paco.jones",
-      "firstname": "Paco",
-      "surname": "Jones",
-      "password": "123456",
-      "id": 3
-    },
-    {
-      "email": "correu@correu.cat",
-      "firstname": "Joan",
-      "surname": "Babau",
-      "password": "123456",
-      "id": 4
-    },
-    {
-      "email": "correu@correu.cat",
-      "firstname": "Joan",
-      "surname": "Babau",
-      "password": "123456",
-      "id": 5
-    },
-    {
-      "email": "mail@mail.net",
-      "firstname": "Manolo",
-      "surname": "Garcia",
-      "password": "123456",
-      "id": 6
-    },
-    {
-      "email": "prova@prova.cat",
-      "firstname": "Ismael",
-      "surname": "Mentor",
-      "password": "123456",
-      "id": 7
     }
   ]
 }
