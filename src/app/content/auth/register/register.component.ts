@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from 'src/app/core/interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector   : 'app-register',
@@ -14,17 +15,18 @@ export class RegisterComponent {
 
   public user! : User
   public url: string = 'http://localhost:3000/user'
-
+  
   public registerForm : FormGroup = this.fb.group({
     email     : [ '', [ Validators.required, Validators.email ] ],
     firstname : [ '', [ Validators.required, Validators.minLength(3) ] ],
     surname   : [ '', [ Validators.required, Validators.minLength(3) ] ],
     password  : [ '', [ Validators.required, Validators.minLength(6) ] ],
   })
-
+  
   constructor (
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private router:Router
   ) {}
 
   saveRegisterForm (){
@@ -36,8 +38,10 @@ export class RegisterComponent {
     }
     this.http.post(this.url, this.user).subscribe()
     this.http.get(this.url).subscribe( users => console.log(users) )
+    this.router.navigate(['/login']);
 
     // localStorage.setItem('user', JSON.stringify(this.user))
   }
 
 }
+
