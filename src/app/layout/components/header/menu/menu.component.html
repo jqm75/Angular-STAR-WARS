@@ -5,12 +5,7 @@
                 Home
             </a>   
         </li>
-        <li *ngIf="!isLogged" class="link-style">
-            <a  [routerLink]="[ '/login' ]" routerLinkActive="active">
-                Starships
-            </a>   
-        </li>
-        <li *ngIf="isLogged" class="link-style">
+        <li class="link-style">
             <a  [routerLink]="[ '/starships' ]" routerLinkActive="active">
                 Starships
             </a>   

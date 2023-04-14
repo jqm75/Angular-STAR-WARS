@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -8,23 +8,33 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor (private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
-  canActivate(): Observable<boolean> | boolean {
-      return this.authService.isLogged();
+  canActivate(
+
+    route: ActivatedRouteSnapshot
+
+  ): Observable<boolean> | boolean {
+
+    const pathRoute = route.url[0].path
+
+    const isLogged = this.authService.isLogged();
+
+    if (pathRoute === 'starships' && !isLogged)  {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    if ((pathRoute === 'login'|| pathRoute === 'register') && isLogged)  {
+      this.router.navigate(['/starships']);
+      return false;
+    }
+
+    return true
   }
-  
+
+
+
 }
-
-
-/* import { inject } from '@angular/core';
-import { CanActivateFn } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-
-export const canActivate: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
-  const authService = inject(AuthService);
-  return authService.isLogged();
-}; */

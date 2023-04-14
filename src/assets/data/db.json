@@ -1,11 +1,11 @@
 {
   "user": [
     {
-      "email": "mail@mail.com",
-      "firstname": "John",
-      "surname": "Doe",
-      "password": "123456",
-      "id": 1
+      "email": "laia@laia.cat",
+      "firstname": "Laia",
+      "surname": "Pujol",
+      "password": "$2a$10$iwXOl4r5Mf/Q9g64.lWDnuSMyJHI2aKmLb/3enJDm1NP8Orr1ac8W",
+      "id": 77
     }
   ]
 }

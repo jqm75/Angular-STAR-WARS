@@ -5,23 +5,25 @@ import { HttpClient } from '@angular/common/http';
 
 import { Auth } from '../../../core/interfaces/auth.interface';
 import { User } from 'src/app/core/interfaces/user.interface';
-import { Subject } from 'rxjs';
+import { Subject, catchError, map, of } from 'rxjs';
+import * as bcrypt from 'bcryptjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private _auth          : Auth | undefined
-  public logged          : boolean = false
+  private _auth: string | undefined
+  public logged: boolean = false
   public isInLocalStorage: boolean = false
-  public url             : string = 'http://localhost:3000/user'
+  public url: string = 'http://localhost:3000/user'
 
   public userIsLogged = new Subject<boolean>()
   public usersData: User[] = []
 
-  constructor (
-    private router:Router, 
+  constructor(
+    private router: Router,
     private http: HttpClient,
 
   ) {
@@ -29,56 +31,63 @@ export class AuthService {
     this.http.get<User[]>(this.url).subscribe(users => this.usersData = users)
   }
 
-  login(loginForm: FormGroup){
-    
-    let email     = loginForm.value.email
-    let password  = loginForm.value.password
+  login(email: string, password: string) {
+    return this.http.get<User[]>(`${this.url}?email=${email}`)
+    .pipe(
+      map(array => {
+      
+      const user = array[0]
+
+      if (user){
+
+        if (bcrypt.compareSync(password, user.password)) {
+          
+          localStorage.setItem('auth', JSON.stringify(user.email));
   
-    let emailExist: boolean = false
-
-    this.usersData.forEach(user => {
-
-      if(user.email === email ){
-        if(user.password === password){
-          console.log('User Mail & Password is OK. The user is Logged right now.')
-          localStorage.setItem( 'logged','true' )
-          this.userIsLogged.next(true)
-          this.router.navigate([''])
+          this._auth = user.email;
+          this.userIsLogged.next(true);
+          this.router.navigate(['/starships'])
         }
-        emailExist = true
+        return user.email
       }
 
-    })
-    
-    return emailExist
-  }
-
-  loginFromSignIn(){
-    
-    localStorage.setItem( 'logged','true' )
-    this.userIsLogged.next(true)
-    this.router.navigate(['/starships'])
-
+      return undefined;
+    }),
+    );
   }
 
   get auth() {
     return this._auth;
   }
-  
+
+  saveRegisterForm (form: FormGroup) {
+    const user = {
+      ...form.value,
+      password: bcrypt.hashSync(form.value.password),
+      id : Math.round(Math.random() * 1000)
+    }
+
+    console.log('🚀 ~ file: auth.service.ts:61 ~ AuthService ~ saveRegisterForm ~ user:', user)
+
+    this.http.post(this.url, user).subscribe()
+
+    this.login(user.email, user.password).subscribe()
+  }  
+
   isLogged() {
-    if (localStorage.getItem('logged')) {
+    if (localStorage.getItem('auth')) {
       console.log('The user is Logged')
       return true
-    } 
-      console.log('The user is not Logged');
-      return false
+    }
+    console.log('The user is not Logged');
+    return false
   }
-  onLoginClick(){
+  onLoginClick() {
     this.router.navigate(['/starships']);
   }
 
   logout() {
-    localStorage.removeItem('logged')
+    localStorage.removeItem('auth')
     this.userIsLogged.next(false)
     this._auth = undefined
     console.log('The user is unlogged')
@@ -86,12 +95,13 @@ export class AuthService {
   }
 
   checkEmail() {
-  let email = localStorage.getItem("user.email");
-  if (email === null) {
-    this.isInLocalStorage = false
-    return false;
-  } return true
-}
+    let email = localStorage.getItem("user.email");
+    if (email === null) {
+      this.isInLocalStorage = false
+      return false;
+    } return true
+  }
 
 }
+
 

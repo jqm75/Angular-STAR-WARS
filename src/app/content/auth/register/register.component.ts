@@ -25,22 +25,11 @@ export class RegisterComponent {
   
   constructor (
     private fb: FormBuilder,
-    private http: HttpClient,
     private authService: AuthService
   ) {}
 
-  saveRegisterForm (){
-    this.user = {
-      email     : this.registerForm.value.email,
-      firstname : this.registerForm.value.firstname,
-      surname   : this.registerForm.value.surname,
-      password  : this.registerForm.value.password
-    }
-    this.http.post(this.url, this.user).subscribe()
-    this.http.get(this.url).subscribe( users => console.log(users) )
-    
-    this.authService.loginFromSignIn()
+  saveRegisterForm() {
+    this.authService.saveRegisterForm(this.registerForm)
   }
-
 }
 
