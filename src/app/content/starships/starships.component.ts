@@ -57,3 +57,20 @@ export class StarshipsComponent implements OnInit {
     return url.split('/')[5];
   }
 }
+
+/* 
+
+onScroll() {
+  const scrollPosition = window.pageYOffset;
+  const windowSize = window.innerHeight;
+  const bodyHeight = document.body.offsetHeight;
+
+  const scrollThreshold = bodyHeight - windowSize - 2500;
+
+  if (scrollPosition > scrollThreshold && this.starshipsList.next !== null) {
+    this.page++;
+    this.getStarships(this.page);
+  }
+} 
+
+*/
