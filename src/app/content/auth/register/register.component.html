@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center mt-5">
-    <form [formGroup]="registerForm" class="" (ngSubmit)="saveRegisterForm()" class="d-flex flex-column gap-3" autocomplete="off">
+    <form [formGroup]="registerForm" class="" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-3" autocomplete="off">
         <h1 class="text-center">Sign Up</h1>
     
         <div class="form-floating mb-3">
@@ -31,7 +31,7 @@
         </div>
     
         <div class="d-flex align-items-center justify-content-center">
-            <button id="saveForm" type="submit" class="btn btn-outline-warning mx-5 mb-3" type="submit" [disabled]="!registerForm.valid"> Sign In </button>
+            <button id="saveForm" type="submit" class="btn btn-outline-warning mx-5 mb-3" type="submit" [disabled]="!registerForm.valid || submitted"> Sign In </button>
         </div>
     
     </form>

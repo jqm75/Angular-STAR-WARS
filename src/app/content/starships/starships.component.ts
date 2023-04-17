@@ -9,6 +9,7 @@ import { StarshipsList } from '../../core/interfaces/swapi.starships.interface';
 })
 
 export class StarshipsComponent implements OnInit {
+
   public starshipsList: StarshipsList = { count: 0, next: null, previous: null, results: [] };
   public page: number | null = 1;
   
@@ -28,7 +29,7 @@ export class StarshipsComponent implements OnInit {
         
       this.starshipsList.results = [...this.starshipsList.results, ...starshipsList.results];
       if(starshipsList.next){
-        this.page = Number(starshipsList.next?.split('=')[1]);
+        this.page = this.page!+1
         //console.log(starshipsList.next?.split('=')[1]);
       } else {
         this.page = null;
@@ -40,7 +41,11 @@ export class StarshipsComponent implements OnInit {
   onScroll() {
     if (this.page != null) {
       
+      console.log('🚀 ~ file: starships.component.ts:46 ~ StarshipsComponent ~ onScroll ~ this.loading.nativeElement.getBoundingClientRect():', this.loading.nativeElement)
+      
       const rect = this.loading.nativeElement.getBoundingClientRect();
+
+
       const bottomShown = rect.bottom <= window.innerHeight;
       if(bottomShown){
         this.getStarships(this.page);

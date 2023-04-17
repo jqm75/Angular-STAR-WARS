@@ -3,9 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { Auth } from '../../../core/interfaces/auth.interface';
 import { User } from 'src/app/core/interfaces/user.interface';
-import { Subject, catchError, map, of } from 'rxjs';
+import { Subject, first, map } from 'rxjs';
 import * as bcrypt from 'bcryptjs';
 
 
@@ -39,16 +38,20 @@ export class AuthService {
       const user = array[0]
 
       if (user){
-
+        
+        console.log(bcrypt.compareSync(password, user.password));
+        
         if (bcrypt.compareSync(password, user.password)) {
           
           localStorage.setItem('auth', JSON.stringify(user.email));
-  
+
           this._auth = user.email;
           this.userIsLogged.next(true);
-          this.router.navigate(['/starships'])
+
+          this.router.navigate(['/starships']);
         }
-        return user.email
+
+        return user
       }
 
       return undefined;
@@ -60,18 +63,20 @@ export class AuthService {
     return this._auth;
   }
 
-  saveRegisterForm (form: FormGroup) {
+  onSubmit (form: FormGroup) {
+    
     const user = {
       ...form.value,
       password: bcrypt.hashSync(form.value.password),
-      id : Math.round(Math.random() * 1000)
+      id: Math.round(Math.random() * 1000)
     }
-
-    console.log('🚀 ~ file: auth.service.ts:61 ~ AuthService ~ saveRegisterForm ~ user:', user)
-
-    this.http.post(this.url, user).subscribe()
-
-    this.login(user.email, user.password).subscribe()
+    
+    this.http.post(this.url, user).pipe(first()).subscribe( ()=>
+      this.login(user.email, form.value.password).subscribe()
+    )
+  
+    this.userIsLogged.next(true)
+    
   }  
 
   isLogged() {
@@ -82,6 +87,7 @@ export class AuthService {
     console.log('The user is not Logged');
     return false
   }
+
   onLoginClick() {
     this.router.navigate(['/starships']);
   }

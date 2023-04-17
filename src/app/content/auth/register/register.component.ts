@@ -15,11 +15,12 @@ export class RegisterComponent {
 
   public user! : User
   public url: string = 'http://localhost:3000/user'
-  
+  public submitted: boolean = false
+
   public registerForm : FormGroup = this.fb.group({
     email     : [ '', [ Validators.required, Validators.email ] ],
-    firstname : [ '', [ Validators.required, Validators.minLength(3) ] ],
-    surname   : [ '', [ Validators.required, Validators.minLength(3) ] ],
+    firstname : [ '', [ Validators.required, Validators.minLength(2) ] ],
+    surname   : [ '', [ Validators.required, Validators.minLength(2) ] ],
     password  : [ '', [ Validators.required, Validators.minLength(6) ] ],
   })
   
@@ -28,8 +29,11 @@ export class RegisterComponent {
     private authService: AuthService
   ) {}
 
-  saveRegisterForm() {
-    this.authService.saveRegisterForm(this.registerForm)
+  onSubmit() {
+    this.submitted = true;
+    this.authService.onSubmit(this.registerForm)
+
   }
+
 }
 

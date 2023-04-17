@@ -7,13 +7,17 @@
             </a>
         </div>
     </div>
-    <div id="loading" *ngIf="page" #loading [ngClass]="{'h-20rem': showClasses, 'flex': showClasses, 'justify-content-center': showClasses, 'align-items-end': showClasses}">
+
+ <app-loading *ngIf="page" #loading></app-loading>
+
+<!--   <div id="loading"  [ngClass]="{'h-20rem': showClasses, 'flex': showClasses, 'justify-content-center': showClasses, 'align-items-end': showClasses}">
         <div class="lds-ellipsis justify-content-center">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
+    
 </ng-container>
 
