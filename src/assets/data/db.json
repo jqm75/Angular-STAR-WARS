@@ -1,74 +1,39 @@
 {
   "user": [
     {
-      "email": "manel@correo.es",
-      "firstname": "Manel",
-      "surname": "Pino",
-      "password": "$2a$10$rnY1awc/XyGi.E3DeB/D2OPug40GuXbmQdVfXMPETlpC9vSYDZLM6",
-      "id": 96
+      "email": "john@mail.com",
+      "firstname": "John",
+      "surname": "Smith",
+      "password": "$2a$10$l/Xy8IijGwfE0wjpVYO6wO72y/.qhYkAUaKLErdZjAm7.KytYbYeO",
+      "id": 727
     },
     {
-      "email": "natx@mail.com",
-      "firstname": "Natx",
-      "surname": "Mart",
-      "password": "$2a$10$lQe1nIgdhXBLz0Ivsf0ElunAQzN7Cu.eqDU/hygqqN85V6v07wYs2",
-      "id": 823
-    },
-    {
-      "email": "natxis@mail.com",
-      "firstname": "Natxis",
-      "surname": "Marts",
-      "password": "123456",
-      "id": 463
+      "email": "al@mail.com",
+      "firstname": "Al",
+      "surname": "Dylan",
+      "password": "$2a$10$Ph9lcOU8todSeKNu1pHBHubAEbooGTE7OkgRIMwMyYikKokPLlfzy",
+      "id": 614
     },
     {
       "email": "quim@mail.com",
-      "firstname": "Quim",
-      "surname": "FuckingMaster",
-      "password": "$2a$10$47BYZBN8eHcoEshdym7/YeZVZ.A.1dalc9JrAEJknreSK/VY83ovm",
-      "id": 136
-    },
-    {
-      "email": "laia@mail.cat",
-      "firstname": "Laia",
+      "firstname": "Joaquim",
       "surname": "Pujol",
-      "password": "$2a$10$JlueJ0j2bC3uiVXaywpbeOq2vcyxlxF2wI.zmrbt2O1KqH00iENFa",
-      "id": 28
+      "password": "$2a$10$xqWOZe.BBgwF0gkys2mwWeE8OSb1mJrfQYiDCXc1TkD4qGrTiRR4C",
+      "id": 383
     },
     {
-      "email": "elia@mail.cat",
-      "firstname": "Èlia",
+      "email": "quim@mail.cat",
+      "firstname": "Joaquim",
       "surname": "Pujol",
-      "password": "$2a$10$a5IZ4KHTUKGr71WCIc11GeQp9Yf6FJrspXP4jd.MNw8k2tVf3klhO",
-      "id": 783
+      "password": "$2a$10$MJpti.Kc50sAQItI/T7Ayeb8NtwOvFOhLHwUE7A.xNdM/4x8WCIG.",
+      "id": 284
     },
     {
-      "email": "adrian@mail.ali",
-      "firstname": "Adrián",
-      "surname": "Vicedo",
-      "password": "$2a$10$nk8dCPxgbKDd7.bwJQaXwu75U65CfjzqKCwfdAqMNFghZW4KOMApq",
-      "id": 831
-    },
-    {
-      "email": "leyre@mail.ali",
-      "firstname": "Leyre",
-      "surname": "Vicedo",
-      "password": "$2a$10$OTxGE0VgWtCxFT/2uNZES.sR2QqEx0Qil5w.ehIY3FlmAMuj2pbde",
-      "id": 580
-    },
-    {
-      "email": "joan@mail.com",
-      "firstname": "Joan",
-      "surname": "Sánchez",
-      "password": "$2a$10$QWLVGNmtLG5YFvgnSyqq1ONiKU2uBeuMkU7gVkWqbJ3FN.3DV7bzK",
-      "id": 135
-    },
-    {
-      "email": "elionor@mail.cup",
-      "firstname": "Elionor",
-      "surname": "Vendrell",
-      "password": "$2a$10$lZmuVE5.2ktOczq5z1ZDJ.E5BWn8dpPKufJCCL1.FEXW/WzW9FANO",
-      "id": 148
+      "email": "quim@mail.es",
+      "firstname": "Joaquim",
+      "surname": "Pujol",
+      "password": "$2a$10$tooGu1hOubvVj5FXlXERxOseRRI7PS221YvZNRWpB5HDtW4DXM/M2",
+      "id": 649
     }
   ]
 }

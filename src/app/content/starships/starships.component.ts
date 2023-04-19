@@ -12,44 +12,54 @@ export class StarshipsComponent implements OnInit {
 
   public starshipsList: StarshipsList = { count: 0, next: null, previous: null, results: [] };
   public page: number | null = 1;
-  
+  public allStarshipsLoaded: boolean = false;
+  public loading: boolean = true;
+  public loadingNextPage: boolean = false;
+
   @Input() showClasses: boolean = true;
 
-  @ViewChild('loading', {static: false}) private loading!: ElementRef<HTMLDivElement>;
+  //@ViewChild('loading', {static: false}) private loadingElement!: ElementRef<HTMLDivElement>;
 
   constructor(private swapiService: SwapiService) {}
 
   ngOnInit() {
-    this.getStarships();
+    this.getStarships(this.page!);
     window.addEventListener('scroll', this.onScroll.bind(this));
   }
 
-  getStarships(page: number = 1) {
+  getStarships(page: number) {
+    const tempStarshipsList: StarshipsList = { count: 0, next: null, previous: null, results: [] };
+  
+    if (this.loadingNextPage) {
+      return;
+    }
+
+    this.loadingNextPage = true;
+  
     this.swapiService.getStarships(page).subscribe(starshipsList => {
-        
-      this.starshipsList.results = [...this.starshipsList.results, ...starshipsList.results];
-      if(starshipsList.next){
-        this.page = this.page!+1
-        //console.log(starshipsList.next?.split('=')[1]);
-      } else {
-        this.page = null;
+      tempStarshipsList.results = starshipsList.results;
+      this.starshipsList.results = [...this.starshipsList.results, ...tempStarshipsList.results];
+
+      this.page! = Number(starshipsList.next?.split('=')[1]);
+
+      if(!starshipsList.next) {
+        this.allStarshipsLoaded = true;
       }
-      
+
+      this.loading = false;
+      this.loadingNextPage = false;
     });
   }
 
   onScroll() {
-    if (this.page != null) {
-      
-      console.log('🚀 ~ file: starships.component.ts:46 ~ StarshipsComponent ~ onScroll ~ this.loading.nativeElement.getBoundingClientRect():', this.loading.nativeElement)
-      
-      const rect = this.loading.nativeElement.getBoundingClientRect();
-
-
-      const bottomShown = rect.bottom <= window.innerHeight;
-      if(bottomShown){
-        this.getStarships(this.page);
-      }
+    const scrollPosition = window.pageYOffset;
+    const windowSize = window.innerHeight;
+    const bodyHeight = document.body.offsetHeight;
+  
+    const scrollThreshold = bodyHeight - windowSize - 2500;
+  
+    if (scrollPosition > scrollThreshold && !this.allStarshipsLoaded && !this.loading && !this.loadingNextPage) {
+      this.getStarships(this.page!);
     }
   }
 
@@ -57,20 +67,3 @@ export class StarshipsComponent implements OnInit {
     return url.split('/')[5];
   }
 }
-
-/* 
-
-onScroll() {
-  const scrollPosition = window.pageYOffset;
-  const windowSize = window.innerHeight;
-  const bodyHeight = document.body.offsetHeight;
-
-  const scrollThreshold = bodyHeight - windowSize - 2500;
-
-  if (scrollPosition > scrollThreshold && this.starshipsList.next !== null) {
-    this.page++;
-    this.getStarships(this.page);
-  }
-} 
-
-*/

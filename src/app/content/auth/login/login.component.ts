@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/content/auth/services/auth.service';
 export class LoginComponent implements OnInit {
   
   public emailIsValid: boolean = true;
-  public mailMessage: string = ''
+  public emailMessage: string = ''
   public passwordMessage: string = ''
   
   
@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
       let email = this.loginForm.get('email')?.value;
       let password = this.loginForm.get('password')?.value;
       this.authService.login(email, password).subscribe(emailExist => {
-        this.mailMessage = '';
+        this.emailMessage = '';
         this.passwordMessage = '';
-        emailExist ? this.passwordMessage = 'The wrong password is' : this.mailMessage = 'In an even further galaxy this email is'; 
+        emailExist ? this.passwordMessage = 'The wrong password is' : this.emailMessage = 'In an even further galaxy this email is'; 
       })
     }
     

@@ -3,10 +3,17 @@
         <h1 class="text-center">Sign Up</h1>
     
         <div class="form-floating mb-3">
-            <input id="email" class="form-control" type="email" formControlName="email" placeholder="e-mail">
+            <input id="email" class="form-control" type="email" (click)="resetMailValidation()" formControlName="email" placeholder="e-mail">
             <label for="email">e-mail</label>
+
             <span class="form-text text-warning" *ngIf="this.registerForm.controls['email'].errors && this.registerForm.controls['email'].touched" >
-                <small>A valid email account we need</small></span>
+                <small>A valid email account we need</small>
+            </span>
+
+            <span class="form-text text-warning" *ngIf="emailMessage">
+                <small>{{ emailMessage }}</small>
+            </span>
+
         </div>
     
         <div class="form-floating mb-3">
@@ -14,6 +21,7 @@
             <label for="name">Name</label>
             <span class="form-text text-warning" *ngIf="this.registerForm.controls['firstname'].errors && this.registerForm.controls['firstname'].touched" >
                 <small>Required your name is, young padawan</small></span>
+
         </div>
     
         <div class="form-floating mb-3">
@@ -31,7 +39,7 @@
         </div>
     
         <div class="d-flex align-items-center justify-content-center">
-            <button id="saveForm" type="submit" class="btn btn-outline-warning mx-5 mb-3" type="submit" [disabled]="!registerForm.valid || submitted"> Sign In </button>
+            <button id="saveForm" type="submit" class="btn btn-outline-warning mx-5 mb-3" type="submit" [disabled]="!registerForm.valid || emailExist"> Sign In </button>
         </div>
     
     </form>

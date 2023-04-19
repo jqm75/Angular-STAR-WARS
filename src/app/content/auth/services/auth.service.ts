@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from 'src/app/core/interfaces/user.interface';
-import { Subject, first, map } from 'rxjs';
+import { Subject, catchError, first, map, tap } from 'rxjs';
 import * as bcrypt from 'bcryptjs';
 
 
@@ -21,6 +21,9 @@ export class AuthService {
   public userIsLogged = new Subject<boolean>()
   public usersData: User[] = []
 
+  public errorMessage: string = '';
+  public emailExists: boolean = false;
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -32,52 +35,71 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http.get<User[]>(`${this.url}?email=${email}`)
-    .pipe(
-      map(array => {
-      
-      const user = array[0]
+      .pipe(
+        map(array => {
 
-      if (user){
-        
-        console.log(bcrypt.compareSync(password, user.password));
-        
-        if (bcrypt.compareSync(password, user.password)) {
-          
-          localStorage.setItem('auth', JSON.stringify(user.email));
+          const user = array[0]
 
-          this._auth = user.email;
-          this.userIsLogged.next(true);
+          if (user) {
 
-          this.router.navigate(['/starships']);
-        }
+            console.log(bcrypt.compareSync(password, user.password));
 
-        return user
-      }
+            if (bcrypt.compareSync(password, user.password)) {
 
-      return undefined;
-    }),
-    );
+              localStorage.setItem('auth', JSON.stringify(user.email));
+
+              this._auth = user.email;
+              this.userIsLogged.next(true);
+
+              this.router.navigate(['/starships']);
+            }
+
+            return user
+          }
+
+          return undefined;
+        }),
+      );
   }
 
   get auth() {
     return this._auth;
   }
 
-  onSubmit (form: FormGroup) {
-    
+  onSubmit(form: FormGroup) {
     const user = {
       ...form.value,
       password: bcrypt.hashSync(form.value.password),
-      id: Math.round(Math.random() * 1000)
-    }
-    
-    this.http.post(this.url, user).pipe(first()).subscribe( ()=>
-      this.login(user.email, form.value.password).subscribe()
-    )
-  
-    this.userIsLogged.next(true)
-    
-  }  
+      id: Math.round(Math.random() * 1000),
+    };
+
+    // Verificar si el correo electrónico ya existe
+    return this.http.get<User[]>(`${this.url}?email=${user.email}`)
+      .pipe(
+        map(userArray => {
+
+          console.log(userArray);
+
+          if (userArray[0]) {
+            
+           // this.errorMessage = 'Already in use, email is.';
+            this.userIsLogged.next(false);
+            this.emailExists = true;
+            return true;
+          }
+          else {
+            this.http.post(this.url, user).pipe(first()).subscribe(() => this.login(user.email, form.value.password).subscribe());
+
+            this.userIsLogged.next(true);
+            return false;
+          }
+        }),
+        catchError((err) => {
+          console.log(err)
+          return err
+        }))
+
+  }
 
   isLogged() {
     if (localStorage.getItem('auth')) {
@@ -108,6 +130,8 @@ export class AuthService {
     } return true
   }
 
+
+  
 }
 
 
