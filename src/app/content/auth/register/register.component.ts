@@ -22,10 +22,10 @@ export class RegisterComponent implements OnInit {
   public passwordError: string = '';
 
   public registerForm : FormGroup = this.fb.group({
-    email     : [ 'quim@mail.com', [ Validators.required, Validators.email ] ],
-    firstname : [ 'Joaquim', [ Validators.required, Validators.minLength(2) ] ],
-    surname   : [ 'Pujol', [ Validators.required, Validators.minLength(2) ] ],
-    password  : [ '123123', [ Validators.required, Validators.minLength(6) ] ],
+    email     : [ '', [ Validators.required, Validators.email ] ],
+    firstname : [ '', [ Validators.required, Validators.minLength(2) ] ],
+    surname   : [ '', [ Validators.required, Validators.minLength(2) ] ],
+    password  : [ '', [ Validators.required, Validators.minLength(6) ] ],
   })
   
   constructor (
